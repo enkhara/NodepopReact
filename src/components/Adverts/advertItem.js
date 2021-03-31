@@ -1,6 +1,6 @@
 export const advertItem = (advert) => {
 	return (
-		<div key={advert.id}>
+		<div key={advert.id} className="advert">
 			<div className="image">
 				<img src={advert.image} alt="" />
 			</div>

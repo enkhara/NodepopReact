@@ -1,0 +1,22 @@
+@font-face {
+	font-family: buttonsElements;
+	src: url('./fonts/AmaticSC-Regular.ttf');
+}
+
+@font-face {
+	font-family: numbersElements;
+	src: url('./fonts/Audiowide-Regular.ttf');
+}
+
+@font-face {
+	font-family: titlesElements;
+	src: url('./fonts/PermanentMarker-Regular.ttf');
+}
+
+:root {
+	--dark-grey-color: #222831;
+	--blue-grey-color: #30475e;
+	--coral-color: #f05454;
+	--little-grey-color: #e8e8e8;
+	--white-color: #ffffff;
+}
