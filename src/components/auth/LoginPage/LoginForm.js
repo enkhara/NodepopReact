@@ -3,9 +3,9 @@ import './LoginForm.css';
 import FormField from '../../shared/FormField';
 import Button from '../../shared/Button';
 
-function LoginForm() {
+function LoginForm({ onSubmit }) {
 	const [credentials, setCredentials] = React.useState({
-		username: '',
+		email: '',
 		password: '',
 	});
 
@@ -16,10 +16,16 @@ function LoginForm() {
 		}));
 	};
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		onSubmit(credentials);
+		console.log(credentials);
+	};
+
 	return (
-		<form className="loginForm">
+		<form className="loginForm" onSubmit={handleSubmit}>
 			<FormField
-				name="username"
+				name="email"
 				type="text"
 				label="Email"
 				className="loginForm-field"
@@ -38,6 +44,7 @@ function LoginForm() {
 				type="submit"
 				variant="primary"
 				className="loginForm-submit"
+				disabled={!credentials.email || !credentials.password}
 				//disabled={isLoading || !username || !password}
 			>
 				Log in
