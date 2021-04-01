@@ -1,0 +1,31 @@
+@import url(../../variables.css);
+
+.layout-header {
+	border-bottom-width: 1px;
+	height: 64px;
+	position: fixed;
+	top: 0;
+}
+
+.layout-title {
+	font-family: titlesElements;
+	color: var(--dark-grey-color);
+}
+
+.layout-footer {
+	bottom: 0;
+	position: fixed;
+	background-color: var(--dark-grey-color);
+	font-family: titlesElements;
+	width: 100%;
+	color: var(--little-grey-color);
+	padding: 0.2rem;
+}
+
+.layout-main {
+	max-width: 600px;
+	margin: auto;
+	min-height: calc(100vh - 128px);
+	margin-top: 6rem;
+	margin-bottom: 3rem;
+}

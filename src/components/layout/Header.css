@@ -1,0 +1,29 @@
+@import url(../../variables.css);
+
+.header {
+	align-items: center;
+	display: flex;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: var(--blue-grey-color);
+}
+
+.header-nav {
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+}
+
+.header-button {
+	width: 144px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.header-title {
+	font-family: titlesElements;
+	color: var(--little-grey-color);
+	margin: 1rem;
+	font-size: 2rem;
+}

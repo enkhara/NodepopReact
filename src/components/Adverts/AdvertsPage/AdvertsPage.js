@@ -1,6 +1,7 @@
-//import { advertItem } from './advertItem';
-import { getAdverts } from '../../api/adverts';
+import { advertItem } from './advertItem';
+import { getAdverts } from '../../../api/adverts';
 import React from 'react';
+import Layout from '../../layout/Layout';
 
 // const adverts = [
 // 	{
@@ -45,20 +46,21 @@ import React from 'react';
 // 	},
 // ];
 
-const AdvertsPage = () => {
+const AdvertsPage = ({ ...props }) => {
 	const [adverts, setAdverts] = React.useState([]);
 
 	React.useEffect(() => {
 		getAdverts(console.log('hello')).then(setAdverts);
 	}, []);
 
-	const items = adverts.map((advert) => <li key={advert.id}>{advert.name}</li>);
+	const items = adverts.map((advert) => advertItem(advert));
 
 	return (
-		<div className="advertsPage">
-			{/* <div> {listAdverts} </div> */}
-			<ul>{items}</ul>
-		</div>
+		<Layout title="All you need..." {...props}>
+			<div className="advertsPage">
+				<div> {items} </div>
+			</div>
+		</Layout>
 	);
 };
 
