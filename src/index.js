@@ -7,13 +7,10 @@ import App from './App';
 import storage from './utils/storage';
 import { configureClient } from './api/client';
 
-// const accessToken = storage.get('auth');
-// configureClient({ accessToken });
+const accessToken = storage.get('auth');
+configureClient({ accessToken });
 
-// ReactDOM.render(
-
-// 		{/* <App isInitiallyLogged={!!accessToken} /> */}
-// 		<App />, document.getElementById('root')
-// );
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+	<App isInitiallyLogged={!!accessToken} />,
+	document.getElementById('root')
+);

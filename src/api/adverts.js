@@ -9,7 +9,6 @@ export const getAdverts = () => {
 };
 
 export const getAdvertDetail = (advertId) => {
-	//TODO: verificar url endpoint
 	const url = `${advertsBaseUrl}/v1/adverts/:${advertId}`;
 	return client.get(url);
 };
