@@ -1,7 +1,8 @@
-import { advertItem } from './advertItem';
+import AdvertList from './AdvertList';
 import { getAdverts } from '../../../api/adverts';
 import React from 'react';
 import Layout from '../../layout/Layout';
+import EmptyList from '../../EmptyList/EmptyList';
 
 // const adverts = [
 // 	{
@@ -48,17 +49,28 @@ import Layout from '../../layout/Layout';
 
 const AdvertsPage = ({ ...props }) => {
 	const [adverts, setAdverts] = React.useState([]);
+	console.log('lenght', adverts.length);
+
+	const [error, setError] = React.useState([]);
 
 	React.useEffect(() => {
-		getAdverts(console.log('hello')).then(setAdverts);
+		getAdverts()
+			.then(setAdverts)
+			.catch((error) => setError(error));
 	}, []);
 
-	const items = adverts.map((advert) => advertItem(advert));
+	// const items = adverts.map((advert) => advertItem(advert));
 
 	return (
 		<Layout title="All you need..." {...props}>
 			<div className="advertsPage">
-				<div> {items} </div>
+				{error ? (
+					<div className="advertsPage-error">{error.message}</div>
+				) : adverts.length ? (
+					<AdvertList adverts={adverts} />
+				) : (
+					<EmptyList />
+				)}
 			</div>
 		</Layout>
 	);

@@ -1,0 +1,17 @@
+@import url(./../../variables.css);
+
+.empty-list {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	max-width: 600px;
+}
+
+.emptyList-title {
+	margin-top: 1rem;
+	font-size: 3rem;
+	font-family: titlesElements;
+}
+
+.emptyList-button {
+	padding-bottom: 1rem;
+}

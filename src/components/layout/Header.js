@@ -18,6 +18,13 @@ const Header = () => {
 				>
 					Logout
 				</Button>
+				<Button
+					variant="primary"
+					className="header-button"
+					onClick={handleClick}
+				>
+					New advert
+				</Button>
 			</nav>
 		</header>
 	);
