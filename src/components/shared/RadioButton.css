@@ -1,0 +1,58 @@
+@import url(../../variables.css);
+.container-label {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.container-label input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+.checkMark-radio {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: var(--little-grey-color);
+	border-radius: 50%;
+}
+
+.container-label:hover input ~ .checkMark-radio {
+	background-color: var(--blue-grey-color);
+}
+
+.container-label input:checked ~ .checkMark-radio {
+	background-color: var(--coral-color);
+}
+
+.checkMark-radio:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+.container-label input:checked ~ .checkMark-radio:after {
+	display: block;
+}
+
+.container-label .checkMark-radio:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}

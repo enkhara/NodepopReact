@@ -7,7 +7,6 @@ function LoginPage({ onLogin }) {
 	const [error, setError] = React.useState(null);
 
 	const handleSubmit = (credentials) => {
-		console.log(credentials);
 		login(credentials)
 			.then(() => onLogin())
 			.catch((error) => {

@@ -3,6 +3,7 @@ import { getAdverts } from '../../../api/adverts';
 import React from 'react';
 import Layout from '../../layout/Layout';
 import EmptyList from '../../EmptyList/EmptyList';
+import FilterForm from './FilterForm';
 
 // const adverts = [
 // 	{
@@ -51,26 +52,18 @@ const AdvertsPage = ({ ...props }) => {
 	const [adverts, setAdverts] = React.useState([]);
 	console.log('lenght', adverts.length);
 
-	const [error, setError] = React.useState([]);
-
 	React.useEffect(() => {
-		getAdverts()
-			.then(setAdverts)
-			.catch((error) => setError(error));
+		getAdverts().then(setAdverts);
+		console.log('peticion');
 	}, []);
 
-	// const items = adverts.map((advert) => advertItem(advert));
+	console.log(adverts.length);
 
 	return (
-		<Layout title="All you need..." {...props}>
+		<Layout {...props}>
+			<FilterForm />
 			<div className="advertsPage">
-				{error ? (
-					<div className="advertsPage-error">{error.message}</div>
-				) : adverts.length ? (
-					<AdvertList adverts={adverts} />
-				) : (
-					<EmptyList />
-				)}
+				{adverts.length ? <AdvertList adverts={adverts} /> : <EmptyList />}
 			</div>
 		</Layout>
 	);

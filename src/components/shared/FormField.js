@@ -10,7 +10,7 @@ function FormField({ className, label, autofocus, ...props }) {
 		}
 	}, [autofocus]);
 	return (
-		<div className="formField">
+		<div className={className}>
 			<label className="formField-label">
 				<span>{label}</span>
 				<input

@@ -1,6 +1,7 @@
 import Button from '../shared/Button';
 import './Header.css';
 import { AuthButton } from '../auth/Auth-button';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 	const handleClick = (event) => {
@@ -19,9 +20,10 @@ const Header = () => {
 					Logout
 				</Button>
 				<Button
+					as={Link}
+					to="/advert"
 					variant="primary"
 					className="header-button"
-					onClick={handleClick}
 				>
 					New advert
 				</Button>

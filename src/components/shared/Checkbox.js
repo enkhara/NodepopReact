@@ -1,12 +1,13 @@
 import React from 'react';
 import './Checkbox.css';
 
-function Checkbox({ label, ...props }) {
+function Checkbox({ className, label, ...props }) {
 	return (
-		<div className="checkbox">
+		<div className={className}>
 			<label className="checkbox-label">
-				<span>{label}</span>
+				<span className="checkbox-span">{label}</span>
 				<input type="checkbox" className="checkbox-input" {...props} />
+				<span className="checkMark"></span>
 			</label>
 		</div>
 	);

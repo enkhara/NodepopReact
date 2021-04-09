@@ -6,9 +6,6 @@ const AdvertList = ({ adverts }) => {
 		<div className="advert-list">
 			{adverts.map((advert) => (
 				<div key={advert.id} className="advert">
-					{/* <div className="image">
-				<img src={advert.image} alt="" />
-			</div> */}
 					<Link to={`/advert/${advert.id}`}>
 						<div className="advert-info">
 							<h2 className="advert-price">

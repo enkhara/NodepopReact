@@ -11,8 +11,7 @@ function LoginForm({ onSubmit }) {
 		remind: true,
 	});
 
-	console.log(credentials);
-	console.log();
+	console.log('onSubmit', onSubmit);
 
 	const handleChange = (event) => {
 		console.log(event);
@@ -25,10 +24,10 @@ function LoginForm({ onSubmit }) {
 		}));
 	};
 
+	console.log(credentials);
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		onSubmit(credentials);
-		console.log(credentials);
 	};
 
 	return (
@@ -62,7 +61,6 @@ function LoginForm({ onSubmit }) {
 				variant="primary"
 				className="loginForm-submit"
 				disabled={!credentials.email || !credentials.password}
-				//disabled={isLoading || !username || !password}
 			>
 				Log in
 			</Button>
