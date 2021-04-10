@@ -1,7 +1,12 @@
 .filterForm {
 	display: grid;
-	width: ;
-
-	grid-template-columns: 150px 150px 150px 150px 150px;
+	width: 100%;
 	margin: auto;
+	position: fixed;
+	height: 100px;
+	top: 64px;
+
+	grid-template-columns: auto auto auto auto auto;
+	grid-gap: 1rem;
+	background-color: var(--little-grey-color);
 }

@@ -12,8 +12,7 @@ configureClient({ accessToken });
 
 ReactDOM.render(
 	<Router>
-		{/* <App isInitiallyLogged={!!accessToken} /> */}
-		<App />
+		<App isInitiallyLogged={!!accessToken} />
 	</Router>,
 	document.getElementById('root')
 );

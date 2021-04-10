@@ -1,5 +1,7 @@
 .newAdvertForm {
+	margin: auto;
 	display: grid;
+	max-width: 600px;
 
 	grid-template-columns: 150px 150px 150px 150px;
 	grid-template-rows: 85px 85px 85px 40px 40px;

@@ -11,8 +11,6 @@ function LoginForm({ onSubmit }) {
 		remind: true,
 	});
 
-	console.log('onSubmit', onSubmit);
-
 	const handleChange = (event) => {
 		console.log(event);
 		setCredentials((oldCredentials) => ({
@@ -24,7 +22,6 @@ function LoginForm({ onSubmit }) {
 		}));
 	};
 
-	console.log(credentials);
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		onSubmit(credentials);

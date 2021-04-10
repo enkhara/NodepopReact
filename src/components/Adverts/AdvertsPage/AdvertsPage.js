@@ -4,7 +4,7 @@ import React from 'react';
 import Layout from '../../layout/Layout';
 import EmptyList from '../../EmptyList/EmptyList';
 import FilterForm from './FilterForm';
-
+import './AdvertsPage.css';
 // const adverts = [
 // 	{
 // 		image: 'http://127.0.0.1:8000//file-1614525603875.jpg',
@@ -63,7 +63,11 @@ const AdvertsPage = ({ ...props }) => {
 		<Layout {...props}>
 			<FilterForm />
 			<div className="advertsPage">
-				{adverts.length ? <AdvertList adverts={adverts} /> : <EmptyList />}
+				{adverts.length ? (
+					<AdvertList className="advert-items" adverts={adverts} />
+				) : (
+					<EmptyList />
+				)}
 			</div>
 		</Layout>
 	);

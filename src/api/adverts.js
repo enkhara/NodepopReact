@@ -9,7 +9,7 @@ export const getAdverts = () => {
 };
 
 export const getAdvertDetail = (advertId) => {
-	const url = `${advertsBaseUrl}/adverts/:${advertId}`;
+	const url = `${advertsBaseUrl}/adverts/${advertId}`;
 	return client.get(url);
 };
 
