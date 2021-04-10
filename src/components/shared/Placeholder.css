@@ -1,7 +1,7 @@
 @import url(../../variables.css);
 
 .image-holder {
-	height: 48px;
-	width: 48px;
+	height: 200px;
+	width: 200px;
 	background-color: var(--blue-grey-color);
 }

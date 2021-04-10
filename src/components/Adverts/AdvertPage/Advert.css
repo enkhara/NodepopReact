@@ -1,20 +1,35 @@
+@import url(../../../variables.css);
+
 .container {
 	max-width: 600px;
 	display: grid;
 	grid-template-columns: 290px 290px;
-	grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
+	grid-template-rows: auto;
 
 	margin: auto;
 
 	grid-gap: 1rem;
 }
 
-.advert-image {
-	grid-row: span 4;
-	grid-column: 1;
+.advertInfo {
+	grid-column: 2;
+
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 3rem 3rem 3rem 3rem;
 }
 
+.advert-image {
+	grid-column: 1;
+	margin-top: 0.5rem;
+}
+.advert-image,
+.advertPrice,
+.advertSale,
+.advertName,
 .advertTags {
-	grid-column: 2;
+	align-self: center;
+}
+.advertTags {
 	grid-row: 4;
 }

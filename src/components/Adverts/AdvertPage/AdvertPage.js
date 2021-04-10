@@ -1,15 +1,21 @@
 import Layout from '../../layout/Layout';
-import { getAdvertDetail } from '../../../api/adverts';
+import { getAdvertDetail, deleteAdvert } from '../../../api/adverts';
 import Advert from './Advert';
 import Button from '../../shared/Button';
 import NotFound from '../../NotFoundPage/NotFound';
 import WindowConfirm from '../../shared/WindowConfirm';
 
+import './AdvertPage.css';
+
 import React from 'react';
+import { useHistory } from 'react-router';
 
 const AdvertPage = ({ ...RouterProps }) => {
+	const history = useHistory();
+
 	const [advert, setAdvert] = React.useState();
 	const [error, setError] = React.useState();
+	const [showDeleteAdvert, setShowDeleteAdvert] = React.useState(false);
 
 	const { match } = RouterProps;
 
@@ -17,41 +23,40 @@ const AdvertPage = ({ ...RouterProps }) => {
 		getAdvertDetail(match.params.id).then(setAdvert).catch(setError);
 	}, [match.params.id]);
 
-	console.log(advert);
-
-	const handleClick = (event) => {
-		console.log('hello world', event);
-		// const confirmDelete = window.confirm('Are you sure');
-		// console.log('hellllllo', window.confirm);
-		// if (confirmDelete) {
-		// 	console.log('yes');
-		// } else {
-		// 	console.log('no');
-		// }
+	const handleClick = () => {
+		setShowDeleteAdvert(true);
 	};
 
-	const handleSubmit = (event) => {
-		console.log('el botton', event);
-		if (event) {
-			//TODO:eliminar advert
-			//TODO: redireccionar a advertspage
+	const handleDeleteClick = (event) => {
+		if (event === 'true') {
+			deleteAdvert(advert.id).then(history.push('/adverts'));
 		} else {
-			//TODO:esconder windowconfirm
+			setShowDeleteAdvert(false);
 		}
 	};
 
 	return error ? (
 		<NotFound />
 	) : (
-		<Layout title="Your selected advert">
-			<Advert {...advert} />
-			<Button className="deleteButton" type="button" onClick={handleClick}>
-				Delete
-			</Button>
-			<WindowConfirm
-				className="delete-confirm"
-				onSubmit={handleSubmit}
-			></WindowConfirm>
+		<Layout title="Your selected advert" onClick={handleDeleteClick}>
+			<div className="advertContainer">
+				<Advert {...advert} />
+				<Button
+					className="deleteAdvertButton"
+					type="button"
+					onClick={handleClick}
+				>
+					Delete
+				</Button>
+			</div>
+			{showDeleteAdvert ? (
+				<WindowConfirm
+					className="delete-confirm"
+					onClick={handleDeleteClick}
+				></WindowConfirm>
+			) : (
+				<div />
+			)}
 		</Layout>
 	);
 };

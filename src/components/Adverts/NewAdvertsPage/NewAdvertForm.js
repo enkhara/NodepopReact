@@ -1,33 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { getAdvertsTags } from '../../../api/adverts';
+
 import Button from '../../shared/Button';
 import Checkbox from '../../shared/Checkbox';
 import FormField from '../../shared/FormField';
-import RadioButton from '../../shared/RadioButton';
+import TagsAvailable from './TagsAvailables';
+
 import './NewAdvertForm.css';
 
 const NewAdvertForm = () => {
+	const [tagsAvailable, setTagsAvailable] = React.useState([]);
+
+	React.useEffect(() => {
+		getAdvertsTags().then(setTagsAvailable);
+	}, []);
+
 	const [advertData, setAdvertData] = React.useState({
 		advertName: '',
 		price: 0,
-		sell: false,
+		sale: false,
 	});
 
-	const [tags, setTags] = React.useState(['hello']);
-
-	const handleChangeTags = (event) => {
-		setTags((oldTags) => {
-			console.log('oldtags', oldTags);
-			oldTags.push(event.target.value);
-			console.log(oldTags);
-		});
-		console.log('tags', tags);
-	};
-
-	// const fileInput = React.createRef();
-	// console.log(fileInput);
-
 	const handleChange = (event) => {
-		console.log('evento', event.target.value);
 		setAdvertData((oldAdvertData) => ({
 			...oldAdvertData,
 			[event.target.name]:
@@ -36,10 +31,27 @@ const NewAdvertForm = () => {
 					: event.target.value,
 		}));
 	};
-	console.log('!', !advertData.advertName, tags.length === 0);
+
+	//console.log(advertData);
+	const [tags, setTags] = React.useState([]);
+
+	const handleChangeTags = (event) => {
+		//console.log(event.target.checked);
+		if (event.target.checked) {
+			setTags((oldTags) => [...oldTags, event.target.value]);
+		} else {
+			setTags((oldTags) => oldTags.filter((tag) => tag !== event.target.value));
+		}
+	};
+
+	console.log('piruli', tags);
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log(advertData);
+	};
 
 	return (
-		<form className="newAdvertForm">
+		<form className="newAdvertForm" onSubmit={handleSubmit}>
 			<FormField
 				name="advertName"
 				type="text"
@@ -68,49 +80,29 @@ const NewAdvertForm = () => {
 			/>
 
 			<Checkbox
-				name="sell"
-				label="Sell"
+				name="sale"
+				label="Sale"
 				className="checkbox-sell"
-				checked={advertData.sell}
+				checked={advertData.sale}
 				onChange={handleChange}
 			/>
 
-			<RadioButton
-				name="motor"
-				label="Motor"
-				className="radioButton-motor"
+			<TagsAvailable
+				className="tagsAvailable"
 				onChange={handleChangeTags}
-				value={'motor'}
-			/>
-			<RadioButton
-				name="work"
-				label="Work"
-				className="radioButton-motor"
-				onChange={handleChangeTags}
-				value={'work'}
-			/>
-			<RadioButton
-				name="lifestyle"
-				label="Lifestyle"
-				className="radioButton-motor"
-				onChange={handleChangeTags}
-				value={'lifestyle'}
-			/>
-			<RadioButton
-				name="mobile"
-				label="Mobile"
-				className="radioButton-motor"
-				onChange={handleChangeTags}
-				value={'mobile'}
+				name="tags"
+				tags={tagsAvailable}
+				checked={tags}
 			/>
 
 			<Button
 				type="submit"
 				variant="primary"
 				className="newAdvert-submit"
-				disabled={
-					!advertData.advertName || !advertData.price || tags.length === 0
-				}
+
+				// disabled={
+				// 	//!advertData.advertName || !advertData.price || tags.length === 0
+				// }
 			>
 				Add
 			</Button>

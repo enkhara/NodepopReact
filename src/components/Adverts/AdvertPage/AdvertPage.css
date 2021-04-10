@@ -1,0 +1,14 @@
+@import url(../../../variables.css);
+
+.advertContainer {
+	max-width: 600px;
+	margin: auto;
+
+	border-radius: 10px;
+	border: 0.2rem solid var(--blue-grey-color);
+}
+
+.deleteAdvertButton {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem;
+}

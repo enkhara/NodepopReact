@@ -5,12 +5,10 @@ import { logout } from '../../api/auth';
 import { AuthContextConsumer } from '../auth/context';
 
 const AuthButton = ({ className, isLogged, onLogout }) => {
-	console.log('AUTHBUTTON', isLogged, onLogout);
 	const handleLogoutClick = () => {
 		logout().then(onLogout);
 	};
 
-	console.log('AUTHCONTEXTCONSUMER', AuthContextConsumer.value);
 	const props = isLogged
 		? { onClick: handleLogoutClick, children: 'Log out' }
 		: {

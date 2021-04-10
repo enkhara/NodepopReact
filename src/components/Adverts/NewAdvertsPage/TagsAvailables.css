@@ -1,0 +1,7 @@
+.tags-list {
+	display: flex;
+}
+
+.tag {
+	margin: 2rem;
+}

@@ -1,1 +1,37 @@
 @import url(../../variables.css);
+
+.windowConfirm {
+	max-width: 400px;
+	margin: auto;
+
+	display: grid;
+
+	grid-template-columns: 200px 200px;
+	grid-template-rows: 2rem 2rem;
+
+	padding: 1rem;
+	background-color: rgba(240, 84, 84, 0.1);
+}
+
+.deleteButton {
+	grid-column: 1;
+	grid-row: 2;
+	align-self: center;
+}
+
+.abortedButton {
+	grid-column: 2;
+	grid-row: 2;
+	align-self: center;
+}
+
+.message {
+	grid-column: span 2;
+	grid-row: 1;
+}
+
+.abortedButton,
+.deleteButton {
+	max-width: 80px;
+	margin: auto;
+}

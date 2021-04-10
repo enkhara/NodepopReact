@@ -10,7 +10,7 @@ const EmptyList = () => {
 			<Button
 				className="emptyList-button"
 				as={Link}
-				to="/advert"
+				to="/advert/new"
 				variant="primary"
 			>
 				Add

@@ -50,14 +50,10 @@ import './AdvertsPage.css';
 
 const AdvertsPage = ({ ...props }) => {
 	const [adverts, setAdverts] = React.useState([]);
-	console.log('lenght', adverts.length);
 
 	React.useEffect(() => {
 		getAdverts().then(setAdverts);
-		console.log('peticion');
 	}, []);
-
-	console.log(adverts.length);
 
 	return (
 		<Layout {...props}>

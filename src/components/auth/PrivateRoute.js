@@ -4,8 +4,7 @@ import { useAuthContext } from '../auth/context';
 
 const PrivateRoute = (props) => {
 	const { isLogged } = useAuthContext();
-	console.log(isLogged ? 'hole' : 'adios');
-	console.log(isLogged);
+
 	return isLogged ? (
 		<Route {...props} />
 	) : (

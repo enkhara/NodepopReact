@@ -18,7 +18,12 @@ export const createAdvert = (advert) => {
 	return client.post(url, advert);
 };
 
-export const getAdvertsTags = (tags) => {
-	const url = `${advertsBaseUrl}/adverts/${tags}`;
+export const getAdvertsTags = () => {
+	const url = `${advertsBaseUrl}/adverts/tags`;
 	return client.get(url);
+};
+
+export const deleteAdvert = (advertId) => {
+	const url = `${advertsBaseUrl}/adverts/${advertId}`;
+	return client.delete(url);
 };
