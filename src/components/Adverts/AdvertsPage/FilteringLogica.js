@@ -37,32 +37,12 @@
 // 	},
 // ];
 
-function selectFilters(filters) {
-	console.log(filters);
-	// filters.forEach((filter) => {
-	// 	console.log(filter);
-	// });
-}
+// adverts.filter(advert => !filtros.advertName || filtros.advertName === advert.name.toLowerCase)
 
-export const Filtering = (adverts, filters, tags) => {
-	selectFilters(filters);
-	adverts.forEach((advert) => {
-		//console.log(advert);
-		// const exist = filteringTags(advert.tags, filters);
-		// console.log(exist);
-	});
-	console.log(filters, tags);
-};
+// adverts.filter(advert => !filtros.buy && !filtros.sale || filtros.buy && filtros.sale || filtros.buy === !advert.sale || filtros.sale === advert.sale)
 
-// const filteringTags = (advertTags, filterTags) => {
-// 	const tagsLength = advertTags.length;
-// 	filterTags.forEach((tag) => {
-// 		advertTags.filter((advertTag) => advertTag !== tag);
-// 	});
+// adverts.filter(advert => !filtros.maxPrice && !filtros.minPrice || filtros.maxPrice < filtros.minPrice || advert.price <= filtros.maxPrice && advert.price >= filtros.minPrice)
 
-// 	if (tagsLength === advertTags.length) {
-// 		return true;
-// 	} else {
-// 		return false;
-// 	}
-// };
+// adverts.filter(advert => !tags.length ||
+
+// 	filtros = {advertName: "volvo", sale: true, buy: false, maxPrice: 0, minPrice: 0}

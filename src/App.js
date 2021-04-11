@@ -13,7 +13,6 @@ function App({ isInitiallyLogged }) {
 	const [isLogged, setIsLogged] = React.useState(isInitiallyLogged);
 
 	const handleLogin = () => setIsLogged(true);
-	console.log('islogged', isLogged);
 
 	const handleLogout = () => setIsLogged(false);
 
@@ -36,11 +35,7 @@ function App({ isInitiallyLogged }) {
 					<Route path="/404" component={NotFound} />
 					<Route exact path="/login">
 						{({ history, location }) => (
-							<LoginPage
-								onLogin={handleLogin}
-								history={history}
-								location={location}
-							/>
+							<LoginPage history={history} location={location} />
 						)}
 					</Route>
 					<PrivateRoute path="/adverts">

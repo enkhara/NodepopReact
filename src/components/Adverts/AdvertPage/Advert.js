@@ -2,7 +2,6 @@ import Placeholder from '../../shared/Placeholder';
 import './Advert.css';
 
 const AdvertDetail = (advert) => {
-	console.log('phoot serc', advert.photo);
 	return (
 		<div className="container">
 			<div className="advert-image">

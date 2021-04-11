@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-
 import { getAdvertsTags } from '../../../api/adverts';
+
+import React from 'react';
 
 import Button from '../../shared/Button';
 import Checkbox from '../../shared/Checkbox';
@@ -39,10 +39,6 @@ const NewAdvertForm = ({ onSubmit }) => {
 		} else {
 			setFileInput([]);
 		}
-
-		//
-
-		console.log(event.target.files[0]);
 	};
 
 	const [tags, setTags] = React.useState([]);
@@ -58,15 +54,13 @@ const NewAdvertForm = ({ onSubmit }) => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const fileBinary = new Blob([fileInput], { type: 'multipart/form-data' });
-		console.log(fileInput, fileBinary);
-		console.log('onsubmit', event);
+
 		let newAdvert = new FormData();
 		newAdvert.append('name', advertData.advertName);
 		newAdvert.append('price', advertData.price);
 		newAdvert.append('sale', advertData.sale);
 		newAdvert.append('tags', tags);
 		if (fileBinary) {
-			//newAdvert.append('photo', new Blob([fileInput], {}));
 			newAdvert.append('photo', fileBinary);
 		}
 		onSubmit(newAdvert);

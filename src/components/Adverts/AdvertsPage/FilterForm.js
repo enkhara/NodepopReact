@@ -4,7 +4,6 @@ import Checkbox from '../../shared/Checkbox';
 import TagsAvailable from '../NewAdvertsPage/TagsAvailables';
 import { getAdvertsTags } from '../../../api/adverts';
 import './FilterForm.css';
-import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import React from 'react';
@@ -34,7 +33,6 @@ const FilterForm = ({ onSubmit }) => {
 	});
 
 	const handleChange = (event) => {
-		//console.log(event.target);
 		setFilterAdvert((oldFilterAdvert) => ({
 			...oldFilterAdvert,
 			[event.target.name]:
@@ -43,7 +41,6 @@ const FilterForm = ({ onSubmit }) => {
 					: event.target.value,
 		}));
 	};
-	//console.log(filterAdvert, tags);
 
 	const handleSubmit = (event) => {
 		console.log(event);
@@ -111,15 +108,15 @@ const FilterForm = ({ onSubmit }) => {
 				type="submit"
 				variant="primary"
 				className="search-button"
-				disabled={
-					!filterAdvert.advertName &&
-					!filterAdvert.maxPrice &&
-					tags.length === 0 &&
-					!filterAdvert.sale &&
-					!filterAdvert.buy &&
-					!filterAdvert.maxPrice &&
-					!filterAdvert.minPrice
-				}
+				// disabled={
+				// 	!filterAdvert.advertName &&
+				// 	!filterAdvert.maxPrice &&
+				// 	tags.length === 0 &&
+				// 	!filterAdvert.sale &&
+				// 	!filterAdvert.buy &&
+				// 	!filterAdvert.maxPrice &&
+				// 	!filterAdvert.minPrice
+				// }
 			>
 				Search
 			</Button>
