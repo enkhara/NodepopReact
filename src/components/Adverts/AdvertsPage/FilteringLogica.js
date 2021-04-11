@@ -37,6 +37,8 @@
 // 	},
 // ];
 
+import AdvertsPage from "./AdvertsPage";
+
 // adverts.filter(advert => !filtros.advertName || filtros.advertName === advert.name.toLowerCase)
 
 // adverts.filter(advert => !filtros.buy && !filtros.sale || filtros.buy && filtros.sale || filtros.buy === !advert.sale || filtros.sale === advert.sale)
@@ -46,3 +48,14 @@
 // adverts.filter(advert => !tags.length ||
 
 // 	filtros = {advertName: "volvo", sale: true, buy: false, maxPrice: 0, minPrice: 0}
+adverts.filter( advert => function (advert) =>{
+	for (tag in tags){
+
+	}
+})
+
+adverts.filter(advert => !tags.length || 
+	tags.length === 1 && advert.tags.find(tag => tag === tags[0]) ||
+	tags.length === 2 && advert.tags.find(tag => tag === tags[0]) && advert.tags.find(tag => tag === tags[1]) ||
+	tags.length === 3 && advert.tags.find(tag => tag === tags[0]) && advert.tags.find(tag => tag === tags[1]) && advert.tags.find(tag => tag === tags[2]) ||
+	tags.length === 4 && advert.tags.find(tag => tag === tags[0]) && advert.tags.find(tag => tag === tags[1]) && advert.tags.find(tag => tag === tags[2]) && advert.tags.find(tag => tag === tags[3]))

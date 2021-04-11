@@ -37,6 +37,23 @@ const AdvertsPage = ({ ...props }) => {
 						(advert.price <= filterAdvert.maxPrice &&
 							advert.price >= filterAdvert.minPrice)
 				)
+				.filter(
+					(advert) =>
+						!tags.length ||
+						(tags.length === 1 && advert.tags.find((tag) => tag === tags[0])) ||
+						(tags.length === 2 &&
+							advert.tags.find((tag) => tag === tags[0]) &&
+							advert.tags.find((tag) => tag === tags[1])) ||
+						(tags.length === 3 &&
+							advert.tags.find((tag) => tag === tags[0]) &&
+							advert.tags.find((tag) => tag === tags[1]) &&
+							advert.tags.find((tag) => tag === tags[2])) ||
+						(tags.length === 4 &&
+							advert.tags.find((tag) => tag === tags[0]) &&
+							advert.tags.find((tag) => tag === tags[1]) &&
+							advert.tags.find((tag) => tag === tags[2]) &&
+							advert.tags.find((tag) => tag === tags[3]))
+				)
 		);
 	};
 	console.log('filtrados', advertsFiltered);
