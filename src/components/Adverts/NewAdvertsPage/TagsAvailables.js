@@ -6,8 +6,6 @@ const TagsAvailable = ({ tags, onChange, checked }) => {
 		onChange(event);
 	};
 
-	console.log('checked', checked);
-
 	return (
 		<div className="tags-list">
 			{tags.map((tag) => (

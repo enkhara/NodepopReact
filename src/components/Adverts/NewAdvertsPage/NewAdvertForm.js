@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { getAdvertsTags } from '../../../api/adverts';
 
@@ -9,7 +9,7 @@ import TagsAvailable from './TagsAvailables';
 
 import './NewAdvertForm.css';
 
-const NewAdvertForm = () => {
+const NewAdvertForm = ({ onSubmit }) => {
 	const [tagsAvailable, setTagsAvailable] = React.useState([]);
 
 	React.useEffect(() => {
@@ -31,12 +31,17 @@ const NewAdvertForm = () => {
 					: event.target.value,
 		}));
 	};
+	const [fileInput, setFileInput] = React.useState('');
 
-	//console.log(advertData);
+	const handleChangeImage = (event) => {
+		setFileInput(event.target.files[0].name);
+		console.log(fileInput.type);
+		console.log(event);
+	};
+
 	const [tags, setTags] = React.useState([]);
 
 	const handleChangeTags = (event) => {
-		//console.log(event.target.checked);
 		if (event.target.checked) {
 			setTags((oldTags) => [...oldTags, event.target.value]);
 		} else {
@@ -44,10 +49,20 @@ const NewAdvertForm = () => {
 		}
 	};
 
-	console.log('piruli', tags);
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(advertData);
+		const blob = new Blob();
+		console.log('onsubmit', event);
+		let newAdvert = new FormData();
+		newAdvert.append('name', advertData.advertName);
+		newAdvert.append('price', advertData.price);
+		newAdvert.append('sale', advertData.sale);
+		newAdvert.append('tags', tags);
+		if (fileInput) {
+			//newAdvert.append('photo', new Blob([fileInput], {}));
+			newAdvert.append('photo', blob, fileInput);
+		}
+		onSubmit(newAdvert);
 	};
 
 	return (
@@ -71,12 +86,19 @@ const NewAdvertForm = () => {
 				onChange={handleChange}
 				autofocus={false}
 			/>
-			<FormField
+			{/* <FormField
 				name="fileInput"
 				type="file"
 				className="newAdvertForm-inputField"
-				// ref={fileInput}
+				value={fileInput}
+				onChange={handleChangeImage}
 				autofocus={false}
+			/> */}
+			<input
+				name="fileInput"
+				type="file"
+				className="newAdvertForm-inputField"
+				onChange={handleChangeImage}
 			/>
 
 			<Checkbox
@@ -99,10 +121,9 @@ const NewAdvertForm = () => {
 				type="submit"
 				variant="primary"
 				className="newAdvert-submit"
-
-				// disabled={
-				// 	//!advertData.advertName || !advertData.price || tags.length === 0
-				// }
+				disabled={
+					!advertData.advertName || !advertData.price || tags.length === 0
+				}
 			>
 				Add
 			</Button>
