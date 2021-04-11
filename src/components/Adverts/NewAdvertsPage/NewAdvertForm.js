@@ -34,9 +34,15 @@ const NewAdvertForm = ({ onSubmit }) => {
 	const [fileInput, setFileInput] = React.useState('');
 
 	const handleChangeImage = (event) => {
-		setFileInput(event.target.files[0].name);
-		console.log(fileInput.type);
-		console.log(event);
+		if (event.target.files[0]) {
+			setFileInput(event.target.files[0]);
+		} else {
+			setFileInput([]);
+		}
+
+		//
+
+		console.log(event.target.files[0]);
 	};
 
 	const [tags, setTags] = React.useState([]);
@@ -51,16 +57,17 @@ const NewAdvertForm = ({ onSubmit }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const blob = new Blob();
+		const fileBinary = new Blob([fileInput], { type: 'multipart/form-data' });
+		console.log(fileInput, fileBinary);
 		console.log('onsubmit', event);
 		let newAdvert = new FormData();
 		newAdvert.append('name', advertData.advertName);
 		newAdvert.append('price', advertData.price);
 		newAdvert.append('sale', advertData.sale);
 		newAdvert.append('tags', tags);
-		if (fileInput) {
+		if (fileBinary) {
 			//newAdvert.append('photo', new Blob([fileInput], {}));
-			newAdvert.append('photo', blob, fileInput);
+			newAdvert.append('photo', fileBinary);
 		}
 		onSubmit(newAdvert);
 	};
@@ -86,15 +93,7 @@ const NewAdvertForm = ({ onSubmit }) => {
 				onChange={handleChange}
 				autofocus={false}
 			/>
-			{/* <FormField
-				name="fileInput"
-				type="file"
-				className="newAdvertForm-inputField"
-				value={fileInput}
-				onChange={handleChangeImage}
-				autofocus={false}
-			/> */}
-			<input
+			<FormField
 				name="fileInput"
 				type="file"
 				className="newAdvertForm-inputField"

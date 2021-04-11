@@ -8,36 +8,39 @@ import { useHistory, useLocation } from 'react-router';
 function LoginPage() {
 	const [error, setError] = React.useState(null);
 	const isLogged = React.useRef(false);
-	console.log('is logged ref', isLogged);
+	const [stateLogin, setStateLogin] = React.useState(false);
 	const firstTime = React.useRef(true);
+
+	React.useEffect(() => {
+		if (firstTime) {
+			firstTime.current = false;
+		}
+	});
 
 	const history = useHistory();
 	const location = useLocation();
 	const { onLogin } = useAuthContext();
-	console.log('onlogin', onLogin);
+
 	//TODO: Solucionar la redirección desde el login mirar los parametros de cuando ejecutar el useEffect()
 	React.useEffect(() => {
 		if (isLogged.current) {
 			onLogin();
 			const { from } = location.state || { from: { pathname: '/' } };
 
-			history.replace('from', from);
-		}
-	});
-
-	React.useEffect(() => {
-		if (firstTime) {
-			// Do things only the first time
-			firstTime.current = false;
+			history.replace(from);
 		}
 	});
 
 	const handleSubmit = async (credentials) => {
+		setError(null);
+		setStateLogin(true);
 		try {
 			await login(credentials);
 			isLogged.current = true;
 		} catch (error) {
 			setError(error);
+		} finally {
+			setStateLogin(false);
 		}
 	};
 

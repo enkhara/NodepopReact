@@ -4,15 +4,14 @@ import FormField from '../../shared/FormField';
 import Button from '../../shared/Button';
 import Checkbox from '../../shared/Checkbox';
 
-function LoginForm({ onSubmit }) {
+const LoginForm = ({ onSubmit }) => {
 	const [credentials, setCredentials] = React.useState({
 		email: '',
 		password: '',
-		remind: true,
+		remind: false,
 	});
 
 	const handleChange = (event) => {
-		console.log(event);
 		setCredentials((oldCredentials) => ({
 			...oldCredentials,
 			[event.target.name]:
@@ -24,6 +23,7 @@ function LoginForm({ onSubmit }) {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		console.log('entramos en handlesubmit de longinForm');
 		onSubmit(credentials);
 	};
 
@@ -63,6 +63,6 @@ function LoginForm({ onSubmit }) {
 			</Button>
 		</form>
 	);
-}
+};
 
 export default LoginForm;

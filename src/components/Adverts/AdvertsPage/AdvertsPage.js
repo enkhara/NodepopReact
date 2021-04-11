@@ -4,6 +4,8 @@ import React from 'react';
 import Layout from '../../layout/Layout';
 import EmptyList from '../../EmptyList/EmptyList';
 import FilterForm from './FilterForm';
+import { Filtering } from './FilteringLogica';
+
 import './AdvertsPage.css';
 
 const AdvertsPage = ({ ...props }) => {
@@ -13,9 +15,22 @@ const AdvertsPage = ({ ...props }) => {
 		getAdverts().then(setAdverts);
 	}, []);
 
+	const [advertsFiltered, setAdvertsFiltered] = React.useState([]);
+	const handleSubmit = (filterAdvert, tags) => {
+		console.log('FILTROPS', filterAdvert, tags);
+		// const filterAd = [...filterAd, adverts];
+		// adverts.forEach((advert) => {
+		// 	filterAdvert[tags].filter(tags);
+		// 	// setAdvertsFiltered((oldAdvertsFiltered) => {
+		// 	// 	[...oldAdvertsFiltered, adverts[tags].filter(tags)];
+		// });
+		// console.log(filterAd);
+		Filtering(adverts, filterAdvert, tags);
+	};
+
 	return (
 		<Layout {...props}>
-			<FilterForm />
+			<FilterForm onSubmit={handleSubmit} />
 			<div className="advertsPage">
 				{adverts.length ? (
 					<AdvertList className="advert-items" adverts={adverts} />
