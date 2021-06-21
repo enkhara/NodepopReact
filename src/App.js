@@ -1,4 +1,6 @@
 import React from 'react';
+import T from 'prop-types';
+
 import { Switch, Route, Redirect } from 'react-router-dom';
 import PrivateRoute from './components/auth/PrivateRoute';
 import './App.css';
@@ -53,5 +55,9 @@ function App({ isInitiallyLogged }) {
 		</div>
 	);
 }
+
+App.propTypes = {
+	isInitiallyLogged: T.bool.isRequired,
+};
 
 export default App;

@@ -1,3 +1,5 @@
+import T from 'prop-types';
+
 import Checkbox from '../../shared/Checkbox';
 import './TagsAvailables.css';
 
@@ -22,6 +24,12 @@ const TagsAvailable = ({ tags, onChange, checked }) => {
 			))}
 		</div>
 	);
+};
+
+TagsAvailable.propTypes = {
+	tags: T.array.isRequired,
+	onChange: T.func.isRequired,
+	checked: T.array.isRequired,
 };
 
 export default TagsAvailable;

@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 
 import Header from './Header';
 import './Layout.css';
@@ -15,5 +16,14 @@ function Layout({ children, title, ...props }) {
 		</div>
 	);
 }
+
+Layout.propTypes = {
+	children: T.node,
+	title: T.string,
+};
+
+Layout.defaultProps = {
+	children: null,
+};
 
 export default Layout;

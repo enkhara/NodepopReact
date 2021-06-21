@@ -56,7 +56,7 @@ const AdvertsPage = ({ ...props }) => {
 				)
 		);
 	};
-	console.log('filtrados', advertsFiltered);
+	//console.log('filtrados', advertsFiltered);
 
 	return (
 		<Layout {...props}>

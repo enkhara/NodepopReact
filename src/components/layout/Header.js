@@ -1,3 +1,5 @@
+import T from 'prop-types';
+
 import Button from '../shared/Button';
 import './Header.css';
 import AuthButton from '../auth/Auth-button';
@@ -23,6 +25,10 @@ const Header = ({ className, ...props }) => {
 			</nav>
 		</header>
 	);
+};
+
+Header.propTypes = {
+	className: T.string,
 };
 
 export default Header;

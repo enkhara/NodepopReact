@@ -1,3 +1,5 @@
+import T from 'prop-types';
+
 import './AdvertList.css';
 import { Link } from 'react-router-dom';
 
@@ -16,13 +18,18 @@ const AdvertList = ({ adverts }) => {
 						</div>
 
 						<div className="advert-tags">
-							<p className="tag">{advert.tags} </p>
+							<p className="tag">{advert.tags.join(', ')} </p>
 						</div>
 					</Link>
 				</div>
 			))}
 		</div>
 	);
+};
+
+AdvertList.propTypes = {
+	adverts: T.arrayOf(T.shape({ id: T.string.isRequired }).isRequired)
+		.isRequired,
 };
 
 export default AdvertList;

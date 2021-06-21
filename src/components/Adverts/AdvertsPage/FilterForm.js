@@ -1,3 +1,5 @@
+import T from 'prop-types';
+
 import Button from '../../shared/Button';
 import FormField from '../../shared/FormField';
 import Checkbox from '../../shared/Checkbox';
@@ -122,6 +124,10 @@ const FilterForm = ({ onSubmit }) => {
 			</Button>
 		</form>
 	);
+};
+
+FilterForm.propTypes = {
+	onSubmit: T.func.isRequired,
 };
 
 export default FilterForm;

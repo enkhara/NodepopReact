@@ -1,4 +1,6 @@
 import React from 'react';
+import T, { func } from 'prop-types';
+
 import './LoginForm.css';
 import FormField from '../../shared/FormField';
 import Button from '../../shared/Button';
@@ -63,6 +65,10 @@ const LoginForm = ({ onSubmit }) => {
 			</Button>
 		</form>
 	);
+};
+
+LoginForm.propTypes = {
+	onSubmit: T.func.isRequired,
 };
 
 export default LoginForm;

@@ -21,7 +21,6 @@ function LoginPage() {
 	const location = useLocation();
 	const { onLogin } = useAuthContext();
 
-	//TODO: Solucionar la redirección desde el login mirar los parametros de cuando ejecutar el useEffect()
 	React.useEffect(() => {
 		if (isLogged.current) {
 			onLogin();

@@ -8,7 +8,7 @@ export const login = (allCredentials) => {
 	console.log('remind', remind);
 	return client.post('/api/auth/login', credentials).then(({ accessToken }) => {
 		configureClient({ accessToken });
-		if (credentials.remind) {
+		if (remind) {
 			storage.set('auth', accessToken);
 		}
 	});

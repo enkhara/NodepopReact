@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import './FormField.css';
 
 function FormField({ className, label, autofocus, ...props }) {
@@ -23,5 +24,11 @@ function FormField({ className, label, autofocus, ...props }) {
 		</div>
 	);
 }
+
+FormField.propTypes = {
+	className: T.string,
+	label: T.string.isRequired,
+	autofocus: T.bool,
+};
 
 export default FormField;

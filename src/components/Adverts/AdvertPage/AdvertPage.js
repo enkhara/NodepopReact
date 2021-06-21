@@ -1,6 +1,6 @@
 import Layout from '../../layout/Layout';
 import { getAdvertDetail, deleteAdvert } from '../../../api/adverts';
-import Advert from './Advert';
+import AdvertDetail from './Advert';
 import Button from '../../shared/Button';
 import NotFound from '../../NotFoundPage/NotFound';
 import WindowConfirm from '../../shared/WindowConfirm';
@@ -13,7 +13,7 @@ import { useHistory } from 'react-router';
 const AdvertPage = ({ ...RouterProps }) => {
 	const history = useHistory();
 
-	const [advert, setAdvert] = React.useState();
+	const [advert, setAdvert] = React.useState(null);
 	const [error, setError] = React.useState();
 	const [showDeleteAdvert, setShowDeleteAdvert] = React.useState(false);
 
@@ -27,8 +27,9 @@ const AdvertPage = ({ ...RouterProps }) => {
 		setShowDeleteAdvert(true);
 	};
 
-	const handleDeleteClick = (event) => {
-		if (event === 'true') {
+	const handleDeleteClick = (click) => {
+		console.log('el boto de pop up', click);
+		if (click === 'true') {
 			deleteAdvert(advert.id).then(history.push('/adverts'));
 		} else {
 			setShowDeleteAdvert(false);
@@ -39,24 +40,32 @@ const AdvertPage = ({ ...RouterProps }) => {
 		<NotFound />
 	) : (
 		<Layout title="Your selected advert" onClick={handleDeleteClick}>
-			<div className="advertContainer">
-				<Advert {...advert} />
-				<Button
-					className="deleteAdvertButton"
-					type="button"
-					onClick={handleClick}
-				>
-					Delete
-				</Button>
-			</div>
-			{showDeleteAdvert ? (
+			{advert && (
+				<div className="advertContainer">
+					<AdvertDetail advert={advert} />
+					<Button
+						className="deleteAdvertButton"
+						type="button"
+						onClick={handleClick}
+					>
+						Delete
+					</Button>
+				</div>
+			)}
+			{showDeleteAdvert && (
+				<WindowConfirm
+					className="delete-confirm"
+					onClick={handleDeleteClick}
+				></WindowConfirm>
+			)}
+			{/* {showDeleteAdvert ? (
 				<WindowConfirm
 					className="delete-confirm"
 					onClick={handleDeleteClick}
 				></WindowConfirm>
 			) : (
 				<div />
-			)}
+			)} */}
 		</Layout>
 	);
 };

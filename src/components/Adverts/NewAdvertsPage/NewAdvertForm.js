@@ -1,5 +1,6 @@
 import { getAdvertsTags } from '../../../api/adverts';
 
+import T from 'prop-types';
 import React from 'react';
 
 import Button from '../../shared/Button';
@@ -53,15 +54,15 @@ const NewAdvertForm = ({ onSubmit }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const fileBinary = new Blob([fileInput], { type: 'multipart/form-data' });
+		//const fileBinary = new Blob([fileInput], { type: 'multipart/form-data' });
 
 		let newAdvert = new FormData();
 		newAdvert.append('name', advertData.advertName);
 		newAdvert.append('price', advertData.price);
 		newAdvert.append('sale', advertData.sale);
 		newAdvert.append('tags', tags);
-		if (fileBinary) {
-			newAdvert.append('photo', fileBinary);
+		if (fileInput) {
+			newAdvert.append('photo', fileInput);
 		}
 		onSubmit(newAdvert);
 	};
@@ -122,6 +123,10 @@ const NewAdvertForm = ({ onSubmit }) => {
 			</Button>
 		</form>
 	);
+};
+
+NewAdvertForm.propTypes = {
+	onSubmit: T.func.isRequired,
 };
 
 export default NewAdvertForm;
