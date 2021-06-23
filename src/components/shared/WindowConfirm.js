@@ -2,13 +2,6 @@ import Button from '../shared/Button';
 import './WindowConfirm.css';
 
 const WindowConfirm = ({ onConfirm, onCancel }) => {
-	function handleCancel() {
-		onCancel();
-	}
-	function handleDelete() {
-		onConfirm();
-	}
-
 	return (
 		<div className="windowConfirm">
 			<span className="message">
@@ -18,7 +11,7 @@ const WindowConfirm = ({ onConfirm, onCancel }) => {
 				className="abortedButton"
 				value="false"
 				type="button"
-				onClick={handleCancel}
+				onClick={onCancel}
 			>
 				No
 			</Button>
@@ -26,7 +19,7 @@ const WindowConfirm = ({ onConfirm, onCancel }) => {
 				className="deleteButton"
 				value="true"
 				type="button"
-				onClick={handleDelete}
+				onClick={onConfirm}
 			>
 				Delete
 			</Button>
