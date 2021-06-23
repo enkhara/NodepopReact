@@ -27,19 +27,18 @@ const AdvertPage = ({ ...RouterProps }) => {
 		setShowDeleteAdvert(true);
 	};
 
-	const handleDeleteClick = (click) => {
-		console.log('el boto de pop up', click);
-		if (click === 'true') {
-			deleteAdvert(advert.id).then(history.push('/adverts'));
-		} else {
-			setShowDeleteAdvert(false);
-		}
+	const handleDelete = () => {
+		deleteAdvert(advert.id).then(history.push('/adverts'));
+	};
+
+	const handelCancel = () => {
+		setShowDeleteAdvert(false);
 	};
 
 	return error ? (
 		<NotFound />
 	) : (
-		<Layout title="Your selected advert" onClick={handleDeleteClick}>
+		<Layout title="Your selected advert" onClick={handleClick}>
 			{advert && (
 				<div className="advertContainer">
 					<AdvertDetail advert={advert} />
@@ -55,17 +54,10 @@ const AdvertPage = ({ ...RouterProps }) => {
 			{showDeleteAdvert && (
 				<WindowConfirm
 					className="delete-confirm"
-					onClick={handleDeleteClick}
+					onConfirm={handleDelete}
+					onCancel={handelCancel}
 				></WindowConfirm>
 			)}
-			{/* {showDeleteAdvert ? (
-				<WindowConfirm
-					className="delete-confirm"
-					onClick={handleDeleteClick}
-				></WindowConfirm>
-			) : (
-				<div />
-			)} */}
 		</Layout>
 	);
 };
