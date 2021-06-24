@@ -69,6 +69,6 @@ export const filterAdverts = (adverts, filterAdvert, tags) => {
 					advert.price >= filterAdvert.minPrice)
 		)
 		.filter(
-			(advert) => !tags.length || advert.tags.some((tag) => tags.includes(tag))
+			(advert) => !tags.length || tags.some((tag) => advert.tags.includes(tag))
 		);
 };
